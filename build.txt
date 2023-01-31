@@ -1,0 +1,4 @@
+displayName = Furgo的FargoBoss计时器
+author = Furgo_
+version = 0.1
+modReferences = FargowiltasSouls

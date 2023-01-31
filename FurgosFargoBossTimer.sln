@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurgosFargoBossTimer", "FurgosFargoBossTimer.csproj", "{A703C826-C2BB-4691-B7DF-E0BB50D74B8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A703C826-C2BB-4691-B7DF-E0BB50D74B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A703C826-C2BB-4691-B7DF-E0BB50D74B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A703C826-C2BB-4691-B7DF-E0BB50D74B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A703C826-C2BB-4691-B7DF-E0BB50D74B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {187C25D3-CFED-4091-BD44-3DF83C6EBA64}
+	EndGlobalSection
+EndGlobal
