@@ -4,5 +4,6 @@ namespace FurgosFargoBossTimer
 {
 	public class FurgosFargoBossTimer : Mod
 	{
+
 	}
 }
