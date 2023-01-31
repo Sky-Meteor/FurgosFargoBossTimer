@@ -24,7 +24,7 @@ namespace FurgosFargoBossTimer
             base.OnKill(npc);
         }
 
-        public Dictionary<int, Dictionary<int, float>> BossPhases = new Dictionary<int, Dictionary<int, float>>()
+        public readonly static Dictionary<int, Dictionary<int, float>> BossPhases = new Dictionary<int, Dictionary<int, float>>()
         {
             /*{
                 ModContent.NPCType<TrojanSquirrel>()
