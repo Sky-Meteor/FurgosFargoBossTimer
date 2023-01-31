@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FargowiltasSouls.NPCs.Challengers;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -25,6 +26,9 @@ namespace FurgosFargoBossTimer
 
         public Dictionary<int, Dictionary<int, float>> BossPhases = new Dictionary<int, Dictionary<int, float>>()
         {
+            /*{
+                ModContent.NPCType<TrojanSquirrel>()
+            },*/
             {
                 NPCID.KingSlime, new Dictionary<int, float>()
                 {
@@ -38,6 +42,13 @@ namespace FurgosFargoBossTimer
                     { 1, 0.5f },
                     { 2, 0.1f },
                     { 3, 0 }
+                }
+            },
+            {
+                NPCID.BrainofCthulhu, new Dictionary<int, float>()
+                {
+                    { 1, 0.99f },
+                    { 2, 0 }
                 }
             },
         };
