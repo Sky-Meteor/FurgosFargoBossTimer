@@ -108,6 +108,45 @@ namespace FurgosFargoBossTimer
                     { 2, 0 }
                 }
             },*/
+            /*{
+                NPCID.EaterofWorldsHead, new Dictionary<int, float>()
+                {
+                    { 1,0 }
+                }
+            }*/ //needs special
+            {
+                NPCID.QueenBee, new Dictionary<int, float>()
+                {
+                    { 1, 0.5f }
+                    //to be decided: divide by Subjects or Attacks
+                }
+            },
+            {
+                NPCID.SkeletronHead, new Dictionary<int, float>()
+                {
+                    { 1, 0.75f },
+                    { 2, 0.50f }
+                }
+            },
+            {
+                NPCID.Deerclops, new Dictionary<int, float>()
+                {
+                    { 1, 0.66f },
+                    { 2, 0.33f }
+                }
+            }/*,
+            {
+                NPCType<FargowiltasSouls.NPCs.DeviBoss.DeviBoss>(), new Dictionary<int, float>()
+                {
+                    { 1, 0.66f }
+                } // for eternity
+            },
+            {
+                NPCType<FargowiltasSouls.NPCs.DeviBoss.DeviBoss>(), new Dictionary<int, float>()
+                {
+                    { 1, 0.5f }
+                } // for masochist
+            }*/
         };
         public readonly static List<int> SpecialNPCs = new List<int>()
         {
