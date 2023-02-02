@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace FurgosFargoBossTimer
 {
@@ -17,26 +18,42 @@ namespace FurgosFargoBossTimer
 
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
-            if (!BossPhases.ContainsKey(npc.type))
-                return;
-            int phaseCount = BossPhases[npc.type].Keys.Count;
-            for (int i = 1; i <= phaseCount; i++)
-                BossPhaseTimer.Add(i, 0);
-            Phase = 1;
+            if (SpecialNPCs.Contains(npc.type))
+            {
+                RegisterModNPCTimer(npc, NPCType<TrojanSquirrel>(), 2);
+                Phase = 1;
+            }
+            else if (BossPhases.ContainsKey(npc.type))
+            {
+                int phaseCount = BossPhases[npc.type].Keys.Count;
+                for (int i = 1; i <= phaseCount; i++)
+                    BossPhaseTimer.Add(i, 0);
+                Phase = 1;
+            }
         }
 
         public override void PostAI(NPC npc)
         {
-            if (!BossPhases.ContainsKey(npc.type))
+            if (SpecialNPCs.Contains(npc.type))
+            {
+                if (npc.type == NPCType<TrojanSquirrel>() && EnteredP2)
+                {
+                    Phase = 2;
+                }
+            }
+            else if (BossPhases.ContainsKey(npc.type))
+            {
+                if (npc.life <= npc.lifeMax * BossPhases[npc.type][Phase])
+                    Phase++;
+            }
+            else
                 return;
             BossPhaseTimer[Phase]++;
-            if (npc.life <= npc.lifeMax * BossPhases[npc.type][Phase])
-                Phase++;
         }
 
         public override void OnKill(NPC npc)
         {
-            if (!BossPhases.ContainsKey(npc.type))
+            if (!BossPhases.ContainsKey(npc.type) && !SpecialNPCs.Contains(npc.type))
                 return;
             Main.NewText(Lang.GetNPCNameValue(npc.type) + "：", Color.Lerp(Color.YellowGreen, Color.Red, 0.65f));
             foreach (KeyValuePair<int, int> phaseTimer in BossPhaseTimer)
@@ -44,7 +61,7 @@ namespace FurgosFargoBossTimer
                 float second = (float)Math.Round((double)phaseTimer.Value / 60, 2);
                 int minute = (int)(second / 60);
                 string secondDisplay = second.ToString();
-                if (!secondDisplay.Contains("."))
+                if (!secondDisplay.Contains('.'))
                     secondDisplay += ".00";
                 string[] splitSecond = secondDisplay.Split(".");
                 if (splitSecond[0].Length == 1)
@@ -56,6 +73,11 @@ namespace FurgosFargoBossTimer
                     minuteDisplay = "0" + minuteDisplay;
                 Main.NewText($"第{phaseTimer.Key}阶段：{minuteDisplay}:{secondDisplay}", Color.Lerp(Color.Lime, Color.LightBlue, 0.5f));
             }
+        }
+
+        public override void ResetEffects(NPC npc)
+        {
+            EnteredP2 = false;
         }
 
         public readonly static Dictionary<int, Dictionary<int, float>> BossPhases = new Dictionary<int, Dictionary<int, float>>()
@@ -86,5 +108,22 @@ namespace FurgosFargoBossTimer
                 }
             },
         };
+        public readonly static List<int> SpecialNPCs = new List<int>()
+        {
+            NPCType<TrojanSquirrel>(),
+        };
+        #region Utils
+        public void RegisterModNPCTimer(NPC npc, int modNPCType, int phaseCount)
+        {
+            if (npc.type == modNPCType)
+            {
+                for (int i = 1; i <= phaseCount; i++)
+                    BossPhaseTimer.Add(i, 0);
+            }
+        }
+        #endregion
+        #region Special Fields
+        public bool EnteredP2;
+        #endregion
     }
 }
