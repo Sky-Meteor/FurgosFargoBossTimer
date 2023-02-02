@@ -20,7 +20,8 @@ namespace FurgosFargoBossTimer
         {
             if (SpecialNPCs.Contains(npc.type))
             {
-                RegisterModNPCTimer(npc, NPCType<TrojanSquirrel>(), 2);
+                RegisterNPCTimer(npc, NPCType<TrojanSquirrel>(), 2);
+                RegisterNPCTimer(npc, NPCID.BrainofCthulhu, 2);
                 Phase = 1;
             }
             else if (BossPhases.ContainsKey(npc.type))
@@ -36,7 +37,7 @@ namespace FurgosFargoBossTimer
         {
             if (SpecialNPCs.Contains(npc.type))
             {
-                if (npc.type == NPCType<TrojanSquirrel>() && EnteredP2)
+                if ((npc.type == NPCType<TrojanSquirrel>() || npc.type == NPCID.BrainofCthulhu) && EnteredP2)
                 {
                     Phase = 2;
                 }
@@ -100,22 +101,23 @@ namespace FurgosFargoBossTimer
                     { 3, 0 }
                 }
             },
-            {
+            /*{
                 NPCID.BrainofCthulhu, new Dictionary<int, float>()
                 {
                     { 1, 0.99f },
                     { 2, 0 }
                 }
-            },
+            },*/
         };
         public readonly static List<int> SpecialNPCs = new List<int>()
         {
             NPCType<TrojanSquirrel>(),
+            NPCID.BrainofCthulhu,
         };
         #region Utils
-        public void RegisterModNPCTimer(NPC npc, int modNPCType, int phaseCount)
+        public void RegisterNPCTimer(NPC npc, int npcType, int phaseCount)
         {
-            if (npc.type == modNPCType)
+            if (npc.type == npcType)
             {
                 for (int i = 1; i <= phaseCount; i++)
                     BossPhaseTimer.Add(i, 0);
