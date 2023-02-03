@@ -172,7 +172,8 @@ namespace FurgosFargoBossTimer
             {
                 NPCID.QueenBee, new Dictionary<int, float>()
                 {
-                    { 1, 0.5f }
+                    { 1, 0.5f },
+                    { 2, 0 }
                     //to be decided: divide by Subjects or Attacks
                 }
             },
@@ -180,20 +181,23 @@ namespace FurgosFargoBossTimer
                 NPCID.SkeletronHead, new Dictionary<int, float>()
                 {
                     { 1, 0.75f },
-                    { 2, 0.50f }
+                    { 2, 0.50f },
+                    { 3, 0 }
                 }
             },
             {
                 NPCID.Deerclops, new Dictionary<int, float>()
                 {
                     { 1, 0.66f },
-                    { 2, 0.33f }
+                    { 2, 0.33f },
+                    { 3, 0 }
                 }
             },
             {
                 NPCType<DeviBoss>(), new Dictionary<int, float>()
                 {
-                    { 1, 0.5f }
+                    { 1, 0.5f },
+                    { 2, 0 }
                 } // for masochist
             }
         };
